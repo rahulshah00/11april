@@ -1,0 +1,101 @@
+﻿@{
+    Layout = "_AdminDashboardLayout";
+}
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div class="row">
+            <div class="col d-flex justify-content-between my-3">
+                <h3>Scheduling</h3>
+                <button onclick="history.back()" class="btn btn-outline-info back_btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" fill="currentColor">
+                        <path d="m142-480 294 294q15 15 14.5 35T435-116q-15 15-35 15t-35-15L57-423q-12-12-18-27t-6-30q0-15 6-30t18-27l308-308q15-15 35.5-14.5T436-844q15 15 15 35t-15 35L142-480Z" />
+                    </svg>
+                    Back
+                </button>
+            </div>
+        </div>
+        <div class="shadow-lg p-3">
+            <div class="row">
+                <div class="d-flex justify-content-between">
+                    <div class="col-6">
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Open this select menu</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                    </div>
+                    <div>
+                        <button class="btn btn-info text-light">
+                            Providers On Call
+                        </button>
+                        <button class="btn btn-info text-light">
+                            Shifts For Review
+                        </button>
+                        <button class="btn btn-info text-light">
+                            Add New Shift
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="my-3 d-flex justify-content-between">
+                <h6>Monday, 4 Dec, 2024</h6>
+                <div class="d-flex">
+                    <div class="d-flex align-items-center mx-1">
+                        <div style="width:20px; height:20px; border-radius:50%; background-color:#ffadf3;padding-right:3px"></div>
+                        Pending Shifts
+                    </div>
+                    <div class="d-flex align-items-center mx-1">
+                        <div style="width:20px; height:20px; border-radius:50%; background-color:#a7cda4;padding-right:3px"></div>
+                        Approved Shifts
+                    </div>
+                </div>
+            </div>
+            <div class="my-3 d-flex justify-content-between">
+                <div>
+                    <button class="rounded-5 btn btn-info text-white me-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+                            <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
+                        </svg>
+                    </button>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
+                        <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z" />
+                    </svg>
+                    <button class="rounded-5 btn btn-info text-white ms-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                            <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+                        </svg>
+                    </button>
+                </div>
+                <div>
+                    <button class="btn btn-info text-light">
+                        Day
+                    </button>
+                    <button class="btn btn-info text-light">
+                        Week
+                    </button>
+                    <button class="btn btn-info text-light">
+                        Month
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="PartialCalendar"></div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            url: '/Admin/Calendar',
+            type: 'POST',
+            data: {},
+            success: function (data) {
+                $("#PartialCalendar").html(data);
+            },
+            error: function (error) {
+                alert('');
+            }
+        });
+    });
+    // </script> 

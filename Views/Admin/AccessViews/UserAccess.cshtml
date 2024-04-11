@@ -1,0 +1,41 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_AdminDashboardLayout";
+}
+<div class="d-flex justify-content-center">
+    <div class="col-8">
+        <div class="my-3" >
+            <div class="d-flex justify-content-between align-items-center">
+                <h4>Create Role</h4>
+                <button class="btn btn-outline-info backbtn " onclick="window.history.back(-1)" style="width:auto">
+                    <img src="/SRS Screen Shorts/go-back-2.svg" alt="" width="25px">Back
+                </button>
+            </div>
+        </div>
+        <div class="shadow-lg p-3">
+            <h5>Details</h5>
+            <div class="row">
+                <div class="col-12 mt-4 col-sm-6 form-floating ">
+                    <input type="text" placeholder="Role Name" class="PatientInputs form-control" id="RoleName">
+                    <label for="RoleName" class="ms-2">Role Name</label>
+                </div>
+                <div class="col-12 col-sm-6 mt-4 form-floating  ">
+                    <select class="form-select border" id="floatingSelect" aria-label="Floating label select example">
+                        <option selected>Select Account Type</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                    <label for="floatingSelect"class="ps-4">Account Type</label>
+                </div>
+                <div>
+                    <div>
+                        Enter all checkboxes here
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>   
+</div>

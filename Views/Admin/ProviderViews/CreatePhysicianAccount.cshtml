@@ -1,0 +1,489 @@
+﻿@{
+    Layout = "_AdminDashboardLayout";
+}
+<div class="EditPhysicianAccount">
+    <div class="container-fluid d-flex justify-content-between mt-4" style="max-width:1000px">
+        <h4 class="fw-bold">
+            Create Provider
+        </h4>
+
+        <button class="btn btn-outline-info align-middle" onclick="history.back(-1)">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="#01bce9" width="15" height="15" viewBox="0 -960 960 960">
+                <path d="m142-480 294 294q15 15 14.5 35T435-116q-15 15-35 15t-35-15L57-423q-12-12-18-27t-6-30q0-15 6-30t18-27l308-308q15-15 35.5-14.5T436-844q15 15 15 35t-15 35L142-480Z" />
+            </svg>
+            <span>Back</span>
+        </button>
+
+    </div>
+
+    <div class="">
+
+        <div class="d-flex justify-content-center" style="max-width:1000px">
+            <form method="post" enctype="multipart/form-data" class="form-floating shadow p-3">
+
+                <h5 class="">Account Information</h5>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-floating">
+                            <input type="text" @* asp-for="UserName" *@ class="form-control" placeholder="User Name(MD.Lastname.F)">
+                            <label for="">User Name(MD.Lastname.F)</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-floating">
+                            <input type="text" @* asp-for="Password" *@ class="form-control" placeholder="Password">
+                            <label for="floatingSelectGrid">Password</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-floating w-100 h-100">
+                            <select @* asp-for="RoleId" *@ class="form-select border-0" aria-label="Default select example">
+                                <option disabled selected value="0">-- Select Role --</option>
+                                @*@foreach (var role in Model.roles)
+                                {
+                                <option value="@role.Roleid">@role.Name</option>
+                                }*@
+                            </select>
+                            <label for="">Select Role</label>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <h5 class="mt-2">Provider Information</h5>
+
+                <div class="row g-2 m-1">
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input @* asp-for="FirstName" *@ type="text" class="form-control" placeholder="First Name">
+                            <label for="">First Name</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input @* asp-for="LastName" *@ type="text" class="form-control">
+                            <label for="floatingSelectGrid">Last Name</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input @* asp-for="Email" *@ type="email" class="form-control">
+                            <label for="">Email</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+
+                        <div class="form-floating d-flex " style="height:58px;">
+                            <input id="phy-phone-country" @* asp-for="CountryCode" *@ hidden />
+
+                            <input id="phy-phone" class="py-4 form-control" type="tel" @* asp-for="Phone" *@ />
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input @* asp-for="MedicalLicenseNumber" *@ class="form-control">
+                            <label for="">Medical License Number</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input @* asp-for="NPINumber" *@ class="form-control">
+                            <label for="">NPI Number</label>
+                        </div>
+                    </div>
+                    <div class="col-6 d-flex justify-content-start flex-wrap mt-4">
+                        <div>
+                            @*@foreach (var item in Model.regions)
+                            {
+                            <input name="selectedRegions" class="form-check-input" type="checkbox" value="@item.Regionid" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                            @item.Name
+                            </label>
+                            }*@
+                        </div>
+                    </div>
+                </div>
+
+
+                <h5 class="fw-bold">Mailing & Billing Information</h5>
+
+                <div class="row g-2 m-1">
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input@* asp-for="Address1" *@ type="text" class="form-control" placeholder="">
+                                <label for="">Address1</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input @* asp-for="Address2" *@ type="text" class="form-control" placeholder="">
+                            <label for="floatingSelectGrid">Address2</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input @* asp-for="City" *@ type="text" class="form-control" placeholder="">
+                            <label for="">City</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating phone-div w-100 h-100 ">
+                            <select @* asp-for="RegionId" *@ class="form-select border-0" aria-label="Default select example">
+                                @*@foreach (var region in Model.regions)
+                                {
+                                <option value="@region.Regionid">@region.Name</option>
+                                }*@
+                            </select>
+                            <label for="">Select A Region</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input @* asp-for="Zip" *@ type="text" class="form-control" placeholder="">
+                            <label for="">Zip</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating d-flex " style="height:58px;">
+                            <input @* asp-for="MailCountryCode" *@ hidden id="phy-alt-phone-country" />
+                            <input @* asp-for="MailPhone" *@ type="tel" id="phy-alt-phone" class="form-control w-100 h-100" placeholder="Phone">
+                        </div>
+                    </div>
+                </div>
+                <div class="my-3"></div>
+
+                <h5 class="fw-bold">Provider Profile</h5>
+
+                <div class="row g-2 m-1">
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input @* asp-for="BusinessName" *@ type="text" class="form-control" placeholder="">
+                            <label for="">Business name</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input @* asp-for="BusinessWebsite" *@ type="text" class="form-control" placeholder="">
+                            <label for="floatingSelectGrid">Business Website</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mt-2">
+
+                        <input @* asp-for="Photo" *@ accept="image/png, image/jpeg, image/jpg" class="form-control" type="file" id="phy_photo_input_id" style="display:none;">
+
+                        <div class="input-group mb-3">
+                            <input type="text" id="phy_photo_text_input_id" class="form-control" placeholder="Select Photo"
+                                   style="caret-color: transparent" autocomplete="off">
+
+                            <span class="input-group-text" id="phy_photo_span_input_id" style="background-color: #10bce9;">
+                                <label for="text_input_span_id">
+                                    <button style="background-color: #10bce9; border: none;" type="button">
+                                        <img src="/images/upload_icon.svg" alt="upload-icon">
+                                        <span class="ms-1 text-white">Upload</span>
+                                    </button>
+                                </label>
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6 mt-2">
+
+                        <div class="d-flex">
+
+                            <input @* asp-for="Signature" *@accept="image/png, image/jpeg, image/jpg" class="form-control" type="file" id="phy_sign_input_id" style="display:none;">
+
+                            <div class="input-group mb-3">
+                                <input type="text" id="phy_sign_text_input_id" class="form-control" placeholder="Select Signature"
+                                       style="caret-color: transparent" autocomplete="off">
+
+                                <span class="input-group-text" id="phy_sign_span_input_id" style="background-color: #10bce9;">
+                                    <label for="phy_sign_span_input_id">
+                                        <button style="background-color: #10bce9; border: none;" type="button">
+                                            <img src="/images/upload_icon.svg" alt="upload-icon">
+                                            <span class="ms-1 text-white">Upload</span>
+                                        </button>
+                                    </label>
+                                </span>
+
+                            </div>
+
+                            <div id="create-signature-btn" style="height: 42px;color:white;" class="ms-1 btn btn-primary d-flex align-items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" fill="currentColor">
+                                    <path d="M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z" />
+                                </svg>
+                                <span class="ms-1 text-white">Create</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div id="signature-div" class="col-12" style="display:none;">
+
+                        <canvas id="signature-pad" width="450" height="150" style="border: 1px solid #ddd;"></canvas>
+
+                        <div>
+                            <button type="button" id="clear-signature">Clear</button>
+                            <button type="button" id="save-signature">Save</button>
+                        </div>
+
+                    </div>
+
+                    <div class="col-12 form-floating">
+                        <textarea class="form-control" placeholder="Admin Notes" id="floatingTextarea2"
+                                  style="height: 100px" @* asp-for="AdminNotes" *@></textarea>
+                        <label for="floatingTextarea2">Admin Notes</label>
+                    </div>
+                </div>
+
+
+                <div class="my-4"></div>
+
+                <div class="border-bottom border-5"></div>
+
+                <h5 class="fw-bold">Onboarding</h5>
+
+                <div class="row my-1">
+                    <div class="wrapper d-flex">
+                        <div class="col-1 m-1">
+                            <input type="checkbox" style="height:20px;width:20px" class="btn-outline-info" />
+                        </div>
+                        <div class="col-4">
+                            <span>Independent Contract Agreement</span>
+                        </div>
+                        <div class="col-4">
+                            <input @* asp-for="ICA" *@ type="file" class="btn" placeholder="">
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row my-1">
+                    <div class="wrapper d-flex">
+                        <div class="col-1 m-1">
+                            <input type="checkbox" style="height:20px;width:20px" class="btn-outline-info" />
+                        </div>
+                        <div class="col-4">
+                            <span>Background Check</span>
+                        </div>
+                        <div class="col-4">
+                            <input @* asp-for="BGCheck" *@ type="file" class="btn " placeholder="">
+                        </div>
+                    </div>
+                </div>
+                <div class="row my-1">
+                    <div class="wrapper d-flex">
+                        <div class="col-1 m-1">
+                            <input type="checkbox" style="height:20px;width:20px" class="btn-outline-info" />
+                        </div>
+                        <div class="col-4">
+                            <span>HIPAA Compliance</span>
+                        </div>
+                        <div class="col-4">
+                            <input @* asp-for="HIPAACompliance" *@ type="file" class="btn " placeholder="">
+                        </div>
+                    </div>
+                </div>
+                <div class="row my-1">
+                    <div class="wrapper d-flex">
+                        <div class="col-1 m-1">
+                            <input type="checkbox" style="height:20px;width:20px" class="btn-outline-info" />
+                        </div>
+                        <div class="col-4">
+                            <span>Non-disclosure agreement</span>
+                        </div>
+                        <div class="col-4">
+                            <input @* asp-for="NDA" *@ type="file" class="btn" placeholder="">
+                        </div>
+                    </div>
+                </div>
+                <div class="row my-1">
+                    <div class="wrapper d-flex">
+
+                        <div class="col-1 m-1">
+                            <input type="checkbox" style="height:20px;width:20px" class="btn-outline-info" />
+                        </div>
+
+                        <div class="col-4">
+                            <span>License Document</span>
+                        </div>
+
+                        <div class="col-4">
+                            <input @* asp-for="LicenseDoc" *@ type="file" class="btn" placeholder="">
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="border-bottom border-5"></div>
+
+                <button onclick="changeCountryCode()" type="submit" class="btn float-end m-1" style="background-color: #2e7d32; color:white;">Create Account</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
+
+
+@*<script>
+
+    const phoneInputField = document.getElementById("phy-phone");
+    var phyPhoneInput = window.intlTelInput(phoneInputField, {
+        utilsScript:
+            "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+        preferredCountries: ["in"],
+        separateDialCode: true,
+        initialCountry: "in"
+    });
+
+    const phoneInputField1 = document.getElementById("phy-alt-phone");
+    var phyAltPhoneInput = window.intlTelInput(phoneInputField1, {
+        utilsScript:
+            "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+        preferredCountries: ["in"],
+        separateDialCode: true,
+        initialCountry: "in"
+    });
+
+    function changeCountryCode() {
+        var countryCode1 = document.getElementById("phy-phone-country");
+        var countryCode2 = document.getElementById("phy-alt-phone-country");
+        countryCode1.value = phyPhoneInput.getSelectedCountryData().dialCode;
+        countryCode2.value = phyAltPhoneInput.getSelectedCountryData().dialCode;
+    }
+
+</script>
+
+
+<script>
+
+    function dataURLtoFile(dataurl, filename) {
+        var arr = dataurl.split(','),
+            mime = arr[0].match(/:(.*?);/)[1],
+            bstr = atob(arr[arr.length - 1]),
+            n = bstr.length,
+            u8arr = new Uint8Array(n);
+        while (n--) {
+            u8arr[n] = bstr.charCodeAt(n);
+        }
+        return new File([u8arr], filename, { type: mime });
+    }
+
+    jQuery(document).ready(function ($) {
+
+        var canvas = document.getElementById("signature-pad");
+        var signaturePad = new SignaturePad(canvas);
+
+        $('#clear-signature').on('click', function () {
+            signaturePad.clear();
+        });
+
+        $('#save-signature').on('click', function () {
+            const signatureImage = signaturePad.toDataURL();
+            const fileName = "Digital_Signature.png";
+
+            $('#phy_sign_text_input_id').val(fileName);
+
+            let fileInputElement = document.getElementById('phy_sign_input_id');
+
+            let container = new DataTransfer();
+            let data = new Blob();
+            let file = dataURLtoFile(signatureImage, fileName);
+            container.items.add(file);
+            fileInputElement.files = container.files;
+
+            $('#signature-div').css("display", "none");
+
+        });
+
+        $('#create-signature-btn').click(function () {
+            $('#signature-div').css("display", "flex");
+        });
+
+    });
+
+
+</script>
+
+
+<script>
+
+    $('#phy_photo_text_input_id').click(function () {
+        $("#phy_photo_input_id").trigger('click');
+    });
+
+    $('#phy_photo_span_input_id').click(function () {
+        $("#phy_photo_input_id").trigger('click');
+    });
+
+    $("#phy_photo_input_id").change(function () {
+        $('#phy_photo_text_input_id').val(this.value.replace(/C:\\fakepath\\/i, ''))
+    })
+
+
+
+    $('#phy_sign_span_input_id').click(function () {
+        $("#phy_sign_input_id").trigger('click');
+    });
+
+    $('#phy_sign_text_input_id').click(function () {
+        $("#phy_sign_input_id").trigger('click');
+    });
+
+    $("#phy_sign_input_id").change(function () {
+        $('#phy_sign_text_input_id').val(this.value.replace(/C:\\fakepath\\/i, ''))
+    })
+
+</script>
+
+
+
+<script>
+
+
+    // $('#createProviderForm').submit(function (e) {
+    //     e.preventDefault();
+
+    //     let countryCode1 = document.getElementById("patient-phone-country");
+    //     countryCode1.value = patientPhoneInput1.getSelectedCountryData().dialCode;
+    //     console.log(countryCode1);
+    //     let countryCode1 = document.getElementById("phone-country");
+    //     countryCode1.value = patientPhoneInput1.getSelectedCountryData().dialCode;
+    //     console.log(countryCode1);
+
+    //     let formData = $(this).serialize();
+    //     console.log(formData);
+
+    //     $.ajax({
+    //         url: "/Admin/CreateProviderAccount",
+    //         data: formData,
+    //         type: 'POST',
+    //         success: function (result) {
+    //             location.reload();
+    //         },
+    //         error: function (error) {
+    //             console.log(error);
+    //             alert('Error Cancelling Request')
+    //         },
+    //     });
+
+    // });
+</script>*@
+
+<script>
+
+    $('.admin-tab').removeClass("active");
+    $('#provider-tab').addClass("active");
+
+</script>
